@@ -15,7 +15,7 @@ def index(request):
     if request.method == 'POST':
         form = AddGitHubUserForm(request.POST)
         if form.is_valid():
-            # TODO(itamar): makes this async to avoid request timeout
+            # TODO(itamar): make this async to avoid request timeout
             user = GitHubUser.make_user(form.cleaned_data['username'])
     else:
         form = AddGitHubUserForm()
@@ -32,7 +32,7 @@ def load_commits(request):
 
     Returns a JSON {"status": "<message>"} object.
     """
-    # TODO(itamar): makes this async to avoid request timeout
+    # TODO(itamar): make this async to avoid request timeout
     if request.is_ajax():
         if request.method == 'POST':
             req = json.loads(request.body)
